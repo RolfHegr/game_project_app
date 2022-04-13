@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import petLogo from "../resources/logo.gif";
+import gamingLogo from "../resources/logo.gif";
 // import { Container, Navbar } from "react-bootstrap";
 
 export default function NavigationBar({
@@ -33,7 +33,7 @@ export default function NavigationBar({
           <img
             height={30}
             width={30}
-            src={petLogo}
+            src={gamingLogo}
             alt="pet logo"
             className="mx-1"
           />

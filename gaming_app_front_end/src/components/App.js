@@ -9,6 +9,7 @@ import { useState } from "react";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
 import DisplayGames from "./DisplayGames";
+import axios from "axios";
 
 function App() {
   const [signupModalShow, setSignupModalShow] = useState(false);
@@ -41,27 +42,26 @@ function App() {
   }
 
   async function userLogin(userObj) {
-    fetch("http://localhost:8000/login")
-      .then((response) => {
-        response.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        const fetchedUsername = data[0];
-        const fetchedPassword = data[1];
-        if (
-          fetchedUsername === userObj.email &&
-          fetchedPassword === userObj.password
-        ) {
-          console.log("THEY MATCH SUCCESSSSS");
-          setLocalStorageWithUser(userObj);
-          setActiveUser(userObj);
-          navigate("/search-games");
-        } else {
-          alert("Password and username not right  ");
-          console.error("PW and USERNAME dont matach");
-        }
-      });
+    try {
+      const res = await axios.get("http://localhost:8000/login");
+      const data = res.data;
+
+      const fetchedUsername = data[0];
+      const fetchedPassword = data[1];
+      if (
+        fetchedUsername === userObj.email &&
+        fetchedPassword === userObj.password
+      ) {
+        setLocalStorageWithUser(userObj);
+        setActiveUser(userObj);
+        navigate("/search-games");
+      } else {
+        alert("Password and username not right  ");
+        console.error("PW and USERNAME dont matach");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (

@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.send(`[${user.name},${user.password}]`);
+  res.send([`${user.name}`,`${user.password}`]);
 });
 
 app.listen(PORT, () => {
