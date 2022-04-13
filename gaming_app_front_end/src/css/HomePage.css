@@ -1,0 +1,14 @@
+.c-display-info {
+    margin-top: 100px;
+    height: calc(100%-50px);
+}
+
+.CTA {
+    /* color: rgb(33, 88, 199); */
+}
+
+.CTA:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #4180bb;
+}
