@@ -1,7 +1,11 @@
 import express from "express";
+import loginRoute from "./routes/loginRoute.js"
+import signupRoute from "./routes/signupRoute.js"
 
 const app = express();
 const PORT = 8000;
+
+app.use(express.json());
 
 //makes it possible to fetch and post to and from localhost
 app.use((req, res, next) => {
@@ -9,18 +13,12 @@ app.use((req, res, next) => {
   next();
 });
 
-//basic variable to verify login
-const user = {
-  name: "test",
-  password: "123",
-};
+app.get("/login", loginRoute);
+
+app.post("/signup", signupRoute)
 
 app.get("/", (req, res) => {
   res.send("Hello World");
-});
-
-app.get("/login", (req, res) => {
-  res.send([`${user.name}`,`${user.password}`]);
 });
 
 app.listen(PORT, () => {

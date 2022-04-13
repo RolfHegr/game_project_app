@@ -57,7 +57,6 @@ function App() {
         navigate("/search-games");
       } else {
         alert("Password and username not right  ");
-        console.error("PW and USERNAME dont matach");
       }
     } catch (err) {
       console.error(err);
