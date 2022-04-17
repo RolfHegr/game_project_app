@@ -1,7 +1,5 @@
 import 'dotenv/config'
 import express from "express";
-import mysql from "mysql";
-
 
 //Routes
 import loginRoute from "./routes/loginRoute.js";
@@ -10,9 +8,10 @@ import signupRoute from "./routes/signupRoute.js";
 //Middleware
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
+import connectDB from './db/connect.js';
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT
 
 app.use(express.json());
 
@@ -33,7 +32,17 @@ app.get("/", (req, res) => {
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-app.listen(PORT, () => {
-  console.log("App listening on port", PORT);
-});
+
  
+async function startServer() {
+  try {
+    const connectToDB = await connectDB(process.env.MONGO_URL);
+    app.listen(PORT, () => {
+      console.log("App listening on port", PORT);
+    });
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+startServer();
