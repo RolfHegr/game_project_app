@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError } from "../errors/index.js";
+// import { use } from "express/lib/application";
 
 const register = async (req, res, next) => {
   try {
@@ -15,7 +16,18 @@ const register = async (req, res, next) => {
     }
 
     const user = await User.create(req.body);
-    res.status(StatusCodes.OK).json({ user });
+    const token = user.createJWT();
+    res
+      .status(StatusCodes.OK)
+      .json({
+        user: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          userName: user.userName,
+        },
+        token,
+      });
   } catch (error) {
     next(error);
   }
