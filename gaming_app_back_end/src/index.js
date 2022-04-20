@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import "express-async-errors";
+import cors from 'cors'
 
 //Routes
 import authRoutes from "../src/routes/authRoutes.js"
@@ -17,11 +18,11 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 
-//makes it possible to fetch and post to and from localhost
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(cors())
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 app.get("/", (req, res) => {
   res.send("Hello World");

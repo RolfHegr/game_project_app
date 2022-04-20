@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Formik } from "formik";
 
 export default function SignupModal(props) {
-  const { onHide, createNewUser } = props;
+  const { onHide, createNewUser, errorMsg, setErrorMsg } = props;
   const formik = { Formik };
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -14,7 +14,6 @@ export default function SignupModal(props) {
   const repeatpwdRef = useRef();
 
   const [showAlert, setShowAlert] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
   const [showSpinner, setShowSpinner] = useState(false);
   const [disableBtn, setDisableBtn] = useState(true);
 
@@ -59,7 +58,7 @@ export default function SignupModal(props) {
       firstName: fName,
       lastName: lName,
       email: emailValue,
-      username: userName,
+      userName: userName,
       password: pwd,
     };
 

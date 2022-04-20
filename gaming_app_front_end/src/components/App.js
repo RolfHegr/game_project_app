@@ -14,12 +14,14 @@ import axios from "axios";
 function App() {
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [activeUser, setActiveUser] = useState(
     JSON.parse(localStorage.getItem("userObj"))
   );
   const navigate = useNavigate();
 
-  function setLocalStorageWithUser(user) {
+  async function setLocalStorageWithUser(user) {
     try {
       const userStringified = JSON.stringify(user);
       localStorage.setItem("userObj", userStringified);
@@ -28,11 +30,27 @@ function App() {
     }
   }
 
-  function createNewUser(newUser) {
-    console.log("newUser Object", newUser);
-    setActiveUser(newUser);
-    setLocalStorageWithUser(newUser);
-    navigate("/search-games");
+  async function createNewUser(newUser) {
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/auth/register",
+        newUser
+      );
+      console.log("response from axios.POST", res);
+      const { user, token } = res.data;
+
+      const userAndToken = user;
+      userAndToken.token = token;
+
+      setActiveUser(userAndToken);
+      setLocalStorageWithUser(userAndToken);
+      setIsLoading(false);
+      navigate("/search-games");
+    } catch (error) {
+      console.error("error from post to server", error);
+      setErrorMsg(error.msg || error)
+    }
   }
 
   function handleLogout() {
@@ -73,6 +91,8 @@ function App() {
       />
       <SignupModal
         createNewUser={createNewUser}
+        errorMsg={errorMsg}
+        setErrorMsg={setErrorMsg}
         show={signupModalShow}
         onHide={() => setSignupModalShow(false)}
       />
