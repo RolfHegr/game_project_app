@@ -31,6 +31,8 @@ function App() {
   }
 
   async function createNewUser(newUser) {
+    setErrorMsg(null);
+
     try {
       setIsLoading(true);
       const res = await axios.post(
@@ -46,11 +48,12 @@ function App() {
       setActiveUser(userAndToken);
       setLocalStorageWithUser(userAndToken);
       setIsLoading(false);
-      setSignupModalShow(false)
+      setSignupModalShow(false);
       navigate("/search-games");
     } catch (error) {
-      console.error("error response", error.response.data.msg)
+      console.error("error response", error.response.data.msg);
       setErrorMsg(error.response.data.msg || error);
+      setIsLoading(false);
     }
   }
 

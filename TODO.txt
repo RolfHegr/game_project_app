@@ -1,0 +1,5 @@
+1. Create Contexts in stead of props. 
+2. Make the currently 2 modal components into ONE.( that renders {children} )
+    2.1 turn the signup modal into a component
+    2.2 turn the login modal to a component
+    2.3 if clicking in nav-bar - then render modal with login, if clickin on signup- render signup component 
