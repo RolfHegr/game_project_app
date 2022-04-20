@@ -3,3 +3,4 @@
     2.1 turn the signup modal into a component
     2.2 turn the login modal to a component
     2.3 if clicking in nav-bar - then render modal with login, if clickin on signup- render signup component 
+3. Add games to game page

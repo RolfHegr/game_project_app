@@ -34,10 +34,14 @@ export default function SignupModal(props) {
     }
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   function handleSignup(e) {
     const emailValue = emailRef.current.value;
-    const fName = firstNameRef.current.value;
-    const lName = lastNameRef.current.value;
+    const fName = capitalizeFirstLetter(firstNameRef.current.value);
+    const lName = capitalizeFirstLetter(lastNameRef.current.value);
     const userName = userNameRef.current.value;
     const pwd = pwdRef.current.value;
     e.preventDefault();
