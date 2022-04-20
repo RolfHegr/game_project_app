@@ -3,18 +3,12 @@ import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useRef } from "react";
 
 export default function LoginModal(props) {
-  const { onHide, createNewUser, userLogin } = props;
+  const { userLogin, errorMsg, setErrorMsg, isLoading } = props;
   const [showAlert, setShowAlert] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("You got an error..");
-  const [showSpinner, setShowSpinner] = useState(false);
   const [disableBtn, setDisableBtn] = useState(true);
 
   const emailRef = useRef();
   const pwdRef = useRef();
-
-  function toggleSpinner() {
-    setShowSpinner(!showSpinner);
-  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -42,8 +36,6 @@ export default function LoginModal(props) {
     };
 
     userLogin(userObj);
-    onHide();
-    //Navigate to homepage - logged in
   }
 
   return (
@@ -77,10 +69,6 @@ export default function LoginModal(props) {
               placeholder="Password"
             />
           </Form.Group>
-
-          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group> */}
           <Button
             className="mb-3 w-100"
             id="loginBtn"
@@ -91,7 +79,7 @@ export default function LoginModal(props) {
           >
             Log in
           </Button>
-          {showAlert && (
+          {errorMsg && (
             <Alert
               variant="danger"
               onClose={() => setShowAlert(false)}
@@ -104,7 +92,7 @@ export default function LoginModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
-      {showSpinner && (
+      {isLoading && (
         <div className="w-100 text-center">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>

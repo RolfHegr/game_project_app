@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Card, CardGroup, Carousel, Container } from "react-bootstrap";
+import React from "react";
+import { Card, Container } from "react-bootstrap";
 import "../css/HomePage.css";
 
 export default function HomePage({

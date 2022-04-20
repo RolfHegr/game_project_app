@@ -32,16 +32,13 @@ function App() {
 
   async function createNewUser(newUser) {
     setErrorMsg(null);
-
     try {
       setIsLoading(true);
       const res = await axios.post(
         "http://localhost:8000/api/v1/auth/register",
         newUser
       );
-      console.log("response from axios.POST", res);
       const { user, token } = res.data;
-
       const userAndToken = user;
       userAndToken.token = token;
 
@@ -64,24 +61,29 @@ function App() {
   }
 
   async function userLogin(userObj) {
+    setErrorMsg(null);
     try {
-      const res = await axios.get("http://localhost:8000/login");
-      const data = res.data;
+      setIsLoading(true);
+      console.log(userObj);
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/auth/login",
+        userObj
+      );
 
-      const fetchedUsername = data[0];
-      const fetchedPassword = data[1];
-      if (
-        fetchedUsername === userObj.email &&
-        fetchedPassword === userObj.password
-      ) {
-        setLocalStorageWithUser(userObj);
-        setActiveUser(userObj);
+      if (res) {
+        const { user, token } = res.data;
+        const userAndToken = user;
+        userAndToken.token = token;
+        setLocalStorageWithUser(userAndToken);
+        setActiveUser(userAndToken);
         navigate("/search-games");
-      } else {
-        alert("Password and username not right  ");
+        setIsLoading(false);
+        setLoginModal(false);
       }
     } catch (error) {
-      console.log("error response", error.response.data.message);
+      setErrorMsg(error.response.data.msg || error);
+      console.error("error response", error.response.data.message);
+      setIsLoading(false);
     }
   }
 
@@ -104,6 +106,9 @@ function App() {
       <LoginModal
         userLogin={userLogin}
         show={loginModal}
+        errorMsg={errorMsg}
+        setErrorMsg={setErrorMsg}
+        isLoading={isLoading}
         onHide={() => setLoginModal(false)}
       />
       <Routes>

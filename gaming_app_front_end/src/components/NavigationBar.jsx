@@ -18,7 +18,9 @@ export default function NavigationBar({
       return (greeting = `Good Morning ${activeUser.firstName} ${activeUser.lastName} `);
     }
     if (hours < 18) {
-      greeting = `Good afternoon ${activeUser.firstName || activeUser.email} ${activeUser.lastName || ''} `;
+      greeting = `Good afternoon ${activeUser.firstName || activeUser.email} ${
+        activeUser.lastName || ""
+      } `;
     } else {
       greeting = `Good Evening ${activeUser.firstName} ${activeUser.lastName} `;
     }
@@ -51,9 +53,6 @@ export default function NavigationBar({
               {!activeUser && (
                 <Nav.Link onClick={showSignupModal}>Sign-up</Nav.Link>
               )}{" "}
-              {/* {activeUser && (
-                <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
-              )} */}
               {activeUser && (
                 <NavDropdown
                   title={createGreeting(activeUser)}
