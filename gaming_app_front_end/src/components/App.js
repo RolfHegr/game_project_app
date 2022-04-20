@@ -49,7 +49,7 @@ function App() {
       navigate("/search-games");
     } catch (error) {
       console.error("error from post to server", error);
-      setErrorMsg(error.msg || error)
+      setErrorMsg(error.msg || error);
     }
   }
 
@@ -94,6 +94,7 @@ function App() {
         errorMsg={errorMsg}
         setErrorMsg={setErrorMsg}
         show={signupModalShow}
+        isLoading={isLoading}
         onHide={() => setSignupModalShow(false)}
       />
       <LoginModal

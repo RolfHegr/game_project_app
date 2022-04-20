@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Formik } from "formik";
 
 export default function SignupModal(props) {
-  const { onHide, createNewUser, errorMsg, setErrorMsg } = props;
+  const { onHide, createNewUser, errorMsg, setErrorMsg, isLoading } = props;
   const formik = { Formik };
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -14,7 +14,6 @@ export default function SignupModal(props) {
   const repeatpwdRef = useRef();
 
   const [showAlert, setShowAlert] = useState(false);
-  const [showSpinner, setShowSpinner] = useState(false);
   const [disableBtn, setDisableBtn] = useState(true);
 
   //input values
@@ -61,8 +60,6 @@ export default function SignupModal(props) {
       userName: userName,
       password: pwd,
     };
-
-
 
     createNewUser(newUser);
     onHide();
@@ -159,7 +156,7 @@ export default function SignupModal(props) {
             variant="primary"
             type="submit"
             onClick={handleSignup}
-            disabled={disableBtn}
+            disabled={isLoading && disableBtn}
           >
             Sign Up
           </Button>
@@ -176,7 +173,7 @@ export default function SignupModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
-      {showSpinner && (
+      {isLoading && (
         <div className="w-100 text-center">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
