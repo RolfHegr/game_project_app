@@ -46,10 +46,11 @@ function App() {
       setActiveUser(userAndToken);
       setLocalStorageWithUser(userAndToken);
       setIsLoading(false);
+      setSignupModalShow(false)
       navigate("/search-games");
     } catch (error) {
-      console.error("error from post to server", error);
-      setErrorMsg(error.msg || error);
+      console.error("error response", error.response.data.msg)
+      setErrorMsg(error.response.data.msg || error);
     }
   }
 
@@ -76,8 +77,8 @@ function App() {
       } else {
         alert("Password and username not right  ");
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.log("error response", error.response.data.message);
     }
   }
 

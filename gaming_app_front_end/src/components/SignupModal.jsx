@@ -62,7 +62,7 @@ export default function SignupModal(props) {
     };
 
     createNewUser(newUser);
-    onHide();
+    // onHide();
     //Navigate to homepage - logged in
   }
 
@@ -160,7 +160,7 @@ export default function SignupModal(props) {
           >
             Sign Up
           </Button>
-          {showAlert && (
+          {errorMsg && (
             <Alert
               variant="danger"
               onClose={() => setShowAlert(false)}
@@ -173,7 +173,7 @@ export default function SignupModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
-      {isLoading && (
+      {isLoading && !errorMsg && (
         <div className="w-100 text-center">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
