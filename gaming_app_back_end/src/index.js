@@ -6,6 +6,7 @@ import morgan from "morgan";
 
 //Routes
 import authRoutes from "../src/routes/authRoutes.js";
+import scoreRoutes from "../src/routes/scoreRoutes.js"
 
 //Middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/scores/", scoreRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
