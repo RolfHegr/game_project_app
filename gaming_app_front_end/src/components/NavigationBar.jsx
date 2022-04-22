@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import gamingLogo from "../resources/logo.gif";
+import "../css/App.css";
 // import { Container, Navbar } from "react-bootstrap";
 
 export default function NavigationBar({

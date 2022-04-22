@@ -16,7 +16,9 @@ export default function GameCard({ testPetObj }) {
     >
       <Card.Img className="mt-2 pet-img" variant="top" alt="pet" src={img} />
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title>
+          <span className="title-line">{name} </span>
+        </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
           <span className="p2">A classic...</span>
         </Card.Subtitle>

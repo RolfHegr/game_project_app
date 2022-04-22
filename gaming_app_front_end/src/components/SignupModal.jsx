@@ -3,6 +3,7 @@ import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useRef } from "react";
 import { Formik } from "formik";
 import "../css/App.css";
+import "../css/Login.css";
 
 export default function SignupModal(props) {
   const { onHide, createNewUser, errorMsg, setErrorMsg, isLoading } = props;
@@ -84,8 +85,8 @@ export default function SignupModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          <h3>Sign up to play!</h3>
+        <Modal.Title id="contained-modal-title-vcenter" className="title-line">
+          Sign up to play!
         </Modal.Title>
       </Modal.Header>
 

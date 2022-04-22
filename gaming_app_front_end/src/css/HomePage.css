@@ -28,6 +28,8 @@
   width: 100%;
   height: 100%;
   background-color: #060608;
+  border-radius: 5px;
+  margin-top: 2%;
 }
 
 .welcome-container {
@@ -42,12 +44,6 @@
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-}
-
-.stack {
-  display: grid;
-  text-align: center;
-  grid-template-columns: 1fr;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@300;400&family=Rubik:wght@500&display=swap");
