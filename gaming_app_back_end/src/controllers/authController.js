@@ -80,11 +80,19 @@ const updateScore = async (req, res) => {
   const { email, date, score } = req.body;
   try {
     const user = await User.findOne({ email });
+    const { highScoreCandy } = user;
+
+    console.log("highScoreCandy", highScoreCandy);
+
+    const { allScores } = highScoreCandy;
+    const newScores = Object.values(allScores)
+    newScores.push(score)
 
     user.highScoreCandy = {
       email,
       date,
       score,
+      newScores,
     };
     const token = user.createJWT();
     await user.save();

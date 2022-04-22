@@ -66,6 +66,7 @@ export default function SignupModal(props) {
       highScoreCandy: {
         date: new Date(),
         score: "",
+        allScores: [0,],
       },
     };
 
