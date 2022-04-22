@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useRef } from "react";
+import "../css/App.css";
 
 export default function LoginModal(props) {
   const { userLogin, errorMsg, setErrorMsg, isLoading } = props;
@@ -46,12 +47,14 @@ export default function LoginModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          <h3>Login</h3>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className="font-weight-bold">Email address</Form.Label>
+            <Form.Label className="p1">Email Address</Form.Label>
             <Form.Control
               ref={emailRef}
               type="email"
@@ -61,7 +64,7 @@ export default function LoginModal(props) {
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
           <Form.Group className="mb-1" controlId="formBasicPassword">
-            <Form.Label className="font-weight-bold">Password</Form.Label>
+            <Form.Label className="p1">Password</Form.Label>
             <Form.Control
               onChange={handleChange}
               ref={pwdRef}

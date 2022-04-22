@@ -17,17 +17,12 @@ export default function HomePage({
         <Card>
           <Card.Header>
             <div className="welcome-container">
-              <div className="container-container">
-                <div className="welcome-hold">
-                  <div className="p1">Let</div>
-                  <div className="welcome-title">
-                    <span style={{ index: 0 }}>THE GAMES</span>
-                    <span style={{ index: 1 }}>THE GAMES</span>
-                    <span style={{ index: 2 }}>THE GAMES</span>
-                  </div>
-                  <span className="right">
-                    <div className="p1">Begin</div>
-                  </span>
+              <div className="container-again">
+                <div class="sign">
+                  <span class="fast-flicker">ga</span>
+                  <span class="flicker">ming</span>
+                  <span class="flicker">-</span>
+                  <span class="fast-flicker">cen</span>ter
                 </div>
               </div>
             </div>
@@ -36,7 +31,15 @@ export default function HomePage({
             )}
             {activeUser && <h3>Welcome back {activeUser.firstName}</h3>}
           </Card.Header>
-          <p>We have plenty of games for you to play</p>
+          {!activeUser && (
+            <p>We have plenty of games for you to play, come and join us!</p>
+          )}
+          {activeUser && (
+            <h3>
+              Your high scores are: <div className="p2">Candy Crush:</div>{" "}
+              {"highschore"} <div className="p2">Snake:</div> {"highschore"}{" "}
+            </h3>
+          )}
         </Card>
       </Container>
     </div>

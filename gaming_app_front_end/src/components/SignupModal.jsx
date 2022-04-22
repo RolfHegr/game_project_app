@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { useRef } from "react";
 import { Formik } from "formik";
+import "../css/App.css";
 
 export default function SignupModal(props) {
   const { onHide, createNewUser, errorMsg, setErrorMsg, isLoading } = props;
@@ -66,7 +67,7 @@ export default function SignupModal(props) {
       highScoreCandy: {
         date: new Date(),
         score: "",
-        allScores: [0,],
+        allScores: [0],
       },
     };
 
@@ -84,7 +85,7 @@ export default function SignupModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Sign up to play
+          <h3>Sign up to play!</h3>
         </Modal.Title>
       </Modal.Header>
 

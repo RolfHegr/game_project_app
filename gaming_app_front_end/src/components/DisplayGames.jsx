@@ -2,7 +2,6 @@ import React from "react";
 import GameCard from "./GameCard";
 import { Container, Row } from "react-bootstrap";
 import snakeImg from "../resources/snake.png";
-import CandyGame from "../candy_components/CandyGame";
 
 export default function DisplayGames() {
   const testPetObj = {
