@@ -63,6 +63,10 @@ export default function SignupModal(props) {
       email: emailValue,
       userName: userName,
       password: pwd,
+      highScoreCandy: {
+        date: new Date(),
+        score: "",
+      },
     };
 
     createNewUser(newUser);
