@@ -21,6 +21,14 @@ MINIMAL VIABLE PRODUCT:
             Score
             Date
 
+            DONE: just post to http://localhost:8000/api/v1/auth/updateScore
+            with an object (take the current email) = {
+                {
+                    "date": "123123213213",
+                    "score": "1111111",
+                    "email": "rolf@gmail.com"
+                }   
+
 4. Get user last score API
     Route: ‘/lastScore/:id [GET] (Protected to user only)
     The get user last score api is responsible for getting the user’s last score

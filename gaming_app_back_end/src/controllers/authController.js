@@ -77,16 +77,33 @@ const lastScore = async (req, res) => {
   }
 };
 
+const highScore = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    const { newScores } = user.highScoreCandy;
+
+    let highScore = 0;
+    for (let i = 0; i < newScores.length; i++) {
+      if (newScores[i] > highScore) {
+        highScore = newScores[i];
+      }
+    }
+    res.status(StatusCodes.OK).json({
+      highScore,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const updateScore = async (req, res) => {
   const { email, date, score } = req.body;
   try {
     const user = await User.findOne({ email });
     const { highScoreCandy } = user;
 
-    console.log("highScoreCandy", highScoreCandy);
-
-    const { allScores } = highScoreCandy;
-    const newScores = Object.values(allScores);
+    const { newScores } = highScoreCandy;
     newScores.push(score);
 
     user.highScoreCandy = {
@@ -111,4 +128,4 @@ const updateUser = async (req, res) => {
   res.send("update user");
 };
 
-export { register, login, updateUser, updateScore, lastScore };
+export { register, login, updateUser, updateScore, lastScore, highScore };
