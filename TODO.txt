@@ -10,40 +10,13 @@ MINIMAL VIABLE PRODUCT:
 
         Text about how to play the game
 
-
-2. Change username to nickname
-
-3. Add score API
-    Route: ‘/addScore [POST] 
-    The add score API adds the score of the player at the end of the round/game to a table
-        Fields: 
-            email/nickname
-            Score
-            Date
-
-            DONE: just post to http://localhost:8000/api/v1/auth/updateScore
-            with an object (take the current email) = {
-                {
-                    "date": "123123213213",
-                    "score": "1111111",
-                    "email": "rolf@gmail.com"
-                }   
-
-4. Get user last score API
-    Route: ‘/lastScore/:id [GET] (Protected to user only)
-    The get user last score api is responsible for getting the user’s last score
-    Display the users last score in the home or game page
-
-5. Get user highest score API
-    Route: ‘/highScore/:id [GET] (Protected to user only)
-    The get user high score api is responsible for getting highest score of a user
-    Display the user’s highest score in the home or game page
-
-
-
+The add score API adds the score of the player at the end of the round/game to a table
+Display the users last score in the home or game page
+Display the user’s highest score in the home or game page 
 
 
 --------- IF TIME -----------
+0. Change username to nickname ?
 1. Create Contexts in stead of props. 
 2. Make the currently 2 modal components into ONE.( that renders {children} )
     2.1 turn the signup modal into a component
