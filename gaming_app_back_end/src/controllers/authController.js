@@ -54,6 +54,28 @@ const login = async (req, res) => {
   });
 };
 
+const lastScore = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const noScore = "User have no scores saved";
+    const user = await User.findOne({ email });
+    if (!user.highScoreCandy.score) {
+      res.status(StatusCodes.OK).json({
+        noScore,
+      });
+    }
+
+    const { highScoreCandy } = user;
+
+    res.status(StatusCodes.OK).json({
+      highScoreCandy,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const updateScore = async (req, res) => {
   const { email, date, score } = req.body;
   try {
@@ -80,4 +102,4 @@ const updateUser = async (req, res) => {
   res.send("update user");
 };
 
-export { register, login, updateUser, updateScore };
+export { register, login, updateUser, updateScore, lastScore };
