@@ -39,19 +39,32 @@ export default function NavigationBar({
             alt="pet logo"
             className="mx-1"
           />
-          Gaming App
+          <span className="p2">Gaming Center</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="w-100 px-2">
-            <Nav.Link href="/">Home</Nav.Link>
-            {activeUser && <Nav.Link href="/search-games">Games</Nav.Link>}
+            <Nav.Link href="/">
+              <div className="p1">Home</div>
+            </Nav.Link>
+            {activeUser && (
+              <Nav.Link href="/search-games">
+                {" "}
+                <div className="p1">Games</div>
+              </Nav.Link>
+            )}
             <div className="d-flex flex-direction-row justify-content-end w-100 justify-flex-end mx-4">
               {!activeUser && (
-                <Nav.Link onClick={showLoginModal}>Login</Nav.Link>
+                <Nav.Link onClick={showLoginModal}>
+                  {" "}
+                  <div className="p1">Login</div>
+                </Nav.Link>
               )}
               {!activeUser && (
-                <Nav.Link onClick={showSignupModal}>Sign-up</Nav.Link>
+                <Nav.Link onClick={showSignupModal}>
+                  {" "}
+                  <div className="p1">Sign-up</div>
+                </Nav.Link>
               )}{" "}
               {activeUser && (
                 <NavDropdown
