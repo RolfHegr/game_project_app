@@ -1,6 +1,45 @@
+MINIMAL VIABLE PRODUCT:
+
+0. ADD THE GAME TO THE PAGE
+
+1. Homepage (Logged In)
+    Components:
+        Header welcoming user by their nickname
+        Current user’s last game score and highest score
+        Starting the game
+
+        Text about how to play the game
+
+
+2. Change username to nickname
+
+3. Add score API
+    Route: ‘/addScore [POST] 
+    The add score API adds the score of the player at the end of the round/game to a table
+        Fields: 
+            email/nickname
+            Score
+            Date
+
+4. Get user last score API
+    Route: ‘/lastScore/:id [GET] (Protected to user only)
+    The get user last score api is responsible for getting the user’s last score
+    Display the users last score in the home or game page
+
+5. Get user highest score API
+    Route: ‘/highScore/:id [GET] (Protected to user only)
+    The get user high score api is responsible for getting highest score of a user
+    Display the user’s highest score in the home or game page
+
+
+
+
+
+--------- IF TIME -----------
 1. Create Contexts in stead of props. 
 2. Make the currently 2 modal components into ONE.( that renders {children} )
     2.1 turn the signup modal into a component
     2.2 turn the login modal to a component
     2.3 if clicking in nav-bar - then render modal with login, if clickin on signup- render signup component 
+
 3. Add games to game page
