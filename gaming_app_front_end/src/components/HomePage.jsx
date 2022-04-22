@@ -18,11 +18,11 @@ export default function HomePage({
           <Card.Header>
             <div className="welcome-container">
               <div className="container-again">
-                <div class="sign">
-                  <span class="fast-flicker">ga</span>
-                  <span class="flicker">ming</span>
-                  <span class="flicker">-</span>
-                  <span class="fast-flicker">cen</span>ter
+                <div className="sign">
+                  <span className="fast-flicker">ga</span>
+                  <span className="flicker">ming</span>
+                  <span className="blank-space"> </span>
+                  <span className="fast-flicker"> cen</span>ter
                 </div>
               </div>
             </div>

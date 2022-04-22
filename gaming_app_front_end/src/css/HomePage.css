@@ -57,7 +57,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin: 40% 50% 30% 50%;
+  margin: 25% 50% 15% 50%;
   width: 100%;
   height: 100%;
   background-image: radial-gradient(
@@ -66,12 +66,10 @@
     transparent
   );
   transform: translate(-50%, -50%);
-  letter-spacing: 2;
-  left: 50%;
-  top: 50%;
+  letter-spacing: 5;
   font-family: "Press Start 2P", cursive;
   text-transform: uppercase;
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #ffe6ff;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
     -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
@@ -99,6 +97,11 @@
     color: #ff2483;
     text-shadow: none;
   }
+}
+
+.blank-space {
+  width: 20px;
+  background-color: black;
 }
 
 .flicker {
