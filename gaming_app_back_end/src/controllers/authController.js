@@ -54,8 +54,30 @@ const login = async (req, res) => {
   });
 };
 
+const updateScore = async (req, res) => {
+  const { email, date, score } = req.body;
+  try {
+    const user = await User.findOne({ email });
+
+    user.highScoreCandy = {
+      email,
+      date,
+      score,
+    };
+    const token = user.createJWT();
+    await user.save();
+    res.status(StatusCodes.OK).json({
+      user,
+      token,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const updateUser = async (req, res) => {
+  user.save();
   res.send("update user");
 };
 
-export { register, login, updateUser };
+export { register, login, updateUser, updateScore };

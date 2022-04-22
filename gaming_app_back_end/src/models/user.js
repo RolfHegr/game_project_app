@@ -40,9 +40,16 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
     select: false,
   },
+  highScoreCandy: {
+    type: Object,
+    required: false,
+    unique: false,
+  }
 });
 
 userSchema.pre("save", async function () {
+  // console.log(this.modifiedPaths())
+  if (!this.isModified('password')) return
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
