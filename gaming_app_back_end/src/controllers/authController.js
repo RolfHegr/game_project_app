@@ -66,10 +66,11 @@ const lastScore = async (req, res) => {
       });
     }
 
-    const { highScoreCandy } = user;
+    const { newScores } = user.highScoreCandy;
+    const lastScore = newScores[newScores.length - 1];
 
     res.status(StatusCodes.OK).json({
-      highScoreCandy,
+      lastScore,
     });
   } catch (error) {
     console.error(error);
@@ -85,8 +86,8 @@ const updateScore = async (req, res) => {
     console.log("highScoreCandy", highScoreCandy);
 
     const { allScores } = highScoreCandy;
-    const newScores = Object.values(allScores)
-    newScores.push(score)
+    const newScores = Object.values(allScores);
+    newScores.push(score);
 
     user.highScoreCandy = {
       email,
