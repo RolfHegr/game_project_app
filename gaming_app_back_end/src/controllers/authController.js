@@ -5,9 +5,14 @@ import { BadRequestError, UnauthenticatedError } from "../errors/index.js";
 
 const register = async (req, res, next) => {
   try {
-    const { firstName, lastName, email, userName, password } = req.body;
+    const { firstName, lastName, email, userName, password, repeatPassword } = req.body;
+    console.log('req.body', req.body)
     if (!firstName || !lastName || !email || !userName || !password) {
       throw new BadRequestError("please provide all values");
+    }
+
+    if (password !== repeatPassword) {
+      throw new BadRequestError("passwords must match")
     }
 
     const userAlreadyExists = await User.findOne({ email });
