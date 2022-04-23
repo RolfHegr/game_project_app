@@ -74,7 +74,7 @@ export default function LoginModal(props) {
             />
           </Form.Group>
           <Button
-            className="mb-3 w-100"
+            className=" w-25"
             id="loginBtn"
             variant="primary"
             type="submit"

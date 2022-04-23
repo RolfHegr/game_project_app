@@ -59,4 +59,4 @@ const updateUser = async (req, res) => {
   res.send("update user");
 };
 
-export { register, login, updateUser, updateScore, lastScore, highScore };
+export { register, login, updateUser};

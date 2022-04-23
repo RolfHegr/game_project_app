@@ -162,7 +162,7 @@ export default function SignupModal(props) {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group> */}
           <Button
-            className="mb-3 w-100"
+            className="mb-3 w-25"
             id="loginBtn"
             variant="primary"
             type="submit"

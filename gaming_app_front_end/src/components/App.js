@@ -47,7 +47,7 @@ function App() {
       setLocalStorageWithUser(userAndToken);
       setIsLoading(false);
       setSignupModalShow(false);
-      navigate("/search-games");
+      navigate("/");
     } catch (error) {
       console.error("error response", error.response.data.msg);
       setErrorMsg(error.response.data.msg || error);
@@ -77,7 +77,7 @@ function App() {
         userAndToken.token = token;
         setLocalStorageWithUser(userAndToken);
         setActiveUser(userAndToken);
-        navigate("/search-games");
+        navigate("/");
         setIsLoading(false);
         setLoginModal(false);
       }
