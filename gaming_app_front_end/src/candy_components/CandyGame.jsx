@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ScoreBoard from "./ScoreBoard";
 import blueCandy from "../candy_images/blue-candy.png";
 import greenCandy from "../candy_images/green-candy.png";
@@ -9,7 +9,9 @@ import yellowCandy from "../candy_images/yellow-candy.png";
 import blank from "../candy_images/blank.png";
 import "../css/Candy.css";
 
-const width = 8;
+const width = 8; ///width of out board
+
+///candy colors
 const candyColors = [
   blueCandy,
   orangeCandy,
@@ -25,16 +27,7 @@ const CandyGame = () => {
   const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
   const [scoreDisplay, setScoreDisplay] = useState(0);
 
-  const createBoard = () => {
-    const randomColorArrangement = [];
-    for (let i = 0; i < width * width; i++) {
-      const randomColor =
-        candyColors[Math.floor(Math.random() * candyColors.length)];
-      randomColorArrangement.push(randomColor);
-    }
-    setCurrentColorArrangement(randomColorArrangement);
-  };
-
+  ///check for max col matches
   const checkForColumnOfFour = () => {
     for (let i = 0; i <= 39; i++) {
       const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
@@ -56,7 +49,8 @@ const CandyGame = () => {
     }
   };
 
-  function checkForRowOfFour() {
+  ///check for max row matches
+  const checkForRowOfFour = () => {
     for (let i = 0; i < 64; i++) {
       const rowOfFour = [i, i + 1, i + 2, i + 3];
       const decidedColor = currentColorArrangement[i];
@@ -81,8 +75,9 @@ const CandyGame = () => {
         return true;
       }
     }
-  }
+  };
 
+  ///check for min col matches
   const checkForColumnOfThree = () => {
     for (let i = 0; i <= 47; i++) {
       const columnOfThree = [i, i + width, i + width * 2];
@@ -104,6 +99,7 @@ const CandyGame = () => {
     }
   };
 
+  ///check for min row matches
   const checkForRowOfThree = () => {
     for (let i = 0; i < 64; i++) {
       const rowOfThree = [i, i + 1, i + 2];
@@ -130,6 +126,7 @@ const CandyGame = () => {
     }
   };
 
+  ///moving candies down after matches (and adding more)
   const moveIntoSquareBelow = () => {
     for (let i = 0; i <= 55; i++) {
       const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -147,10 +144,74 @@ const CandyGame = () => {
     }
   };
 
+  ///dragging candies - make sure to install react-dnd
+  const dragStart = (e) => {
+    setSquareBeingDragged(e.target);
+  };
+  const dragDrop = (e) => {
+    setSquareBeingReplaced(e.target);
+  };
+  const dragEnd = () => {
+    const squareBeingDraggedId = parseInt(
+      squareBeingDragged.getAttribute("data-id")
+    );
+    const squareBeingReplacedId = parseInt(
+      squareBeingReplaced.getAttribute("data-id")
+    );
+
+    currentColorArrangement[squareBeingReplacedId] =
+      squareBeingDragged.getAttribute("src");
+    currentColorArrangement[squareBeingDraggedId] =
+      squareBeingReplaced.getAttribute("src");
+
+    const validMoves = [
+      squareBeingDraggedId - 1,
+      squareBeingDraggedId - width,
+      squareBeingDraggedId + 1,
+      squareBeingDraggedId + width,
+    ];
+
+    const validMove = validMoves.includes(squareBeingReplacedId);
+
+    const isAColumnOfFour = checkForColumnOfFour();
+    const isARowOfFour = checkForRowOfFour();
+    const isAColumnOfThree = checkForColumnOfThree();
+    const isARowOfThree = checkForRowOfThree();
+
+    if (
+      squareBeingReplacedId &&
+      validMove &&
+      (isARowOfThree || isARowOfFour || isAColumnOfFour || isAColumnOfThree)
+    ) {
+      setSquareBeingDragged(null);
+      setSquareBeingReplaced(null);
+    } else {
+      currentColorArrangement[squareBeingReplacedId] =
+        squareBeingReplaced.getAttribute("src");
+      currentColorArrangement[squareBeingDraggedId] =
+        squareBeingDragged.getAttribute("src");
+      setCurrentColorArrangement([...currentColorArrangement]);
+    }
+  };
+
+  //creating game board
+  const createBoard = () => {
+    const randomColorArrangement = [];
+
+    ///fill board with random generated candies
+    for (let i = 0; i < width * width; i++) {
+      const randomColor =
+        candyColors[Math.floor(Math.random() * candyColors.length)];
+      randomColorArrangement.push(randomColor);
+    }
+    setCurrentColorArrangement(randomColorArrangement);
+  };
+
   useEffect(() => {
     createBoard();
   }, []);
 
+  ///check for matches every 100 ms or on change of board
   useEffect(() => {
     const timer = setInterval(() => {
       checkForColumnOfFour();
@@ -171,21 +232,21 @@ const CandyGame = () => {
   ]);
 
   return (
-    <div className="candy-board">
-      <div className="candy-game">
+    <div className="app">
+      <div className="game">
         {currentColorArrangement.map((candyColor, index) => (
           <img
             key={index}
             src={candyColor}
             alt={candyColor}
             data-id={index}
-            // draggable={true}
-            // onDragStart={dragStart}
-            // onDragOver={(e) => e.preventDefault()}
-            // onDragEnter={(e) => e.preventDefault()}
-            // onDragLeave={(e) => e.preventDefault()}
-            // onDrop={dragDrop}
-            // onDragEnd={dragEnd}
+            draggable={true}
+            onDragStart={dragStart}
+            onDragOver={(e) => e.preventDefault()}
+            onDragEnter={(e) => e.preventDefault()}
+            onDragLeave={(e) => e.preventDefault()}
+            onDrop={dragDrop}
+            onDragEnd={dragEnd}
           />
         ))}
       </div>
@@ -193,5 +254,4 @@ const CandyGame = () => {
     </div>
   );
 };
-
 export default CandyGame;
