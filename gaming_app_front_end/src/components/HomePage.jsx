@@ -37,7 +37,7 @@ export default function HomePage({ activeUser }) {
               High Scores <div className="p2"></div>{" "}
               {latestScore && (
                 <div>
-                  Most Recent Score: {latestScore} at{" "}
+                  Most Recent Score: {latestScore} at {<br></br>}{" "}
                   {latestScoreDate && latestScoreDate.substr(0, 24)}
                 </div>
               )}
