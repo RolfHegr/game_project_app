@@ -16,14 +16,14 @@ export default function NavigationBar({
     const hours = date.getHours();
 
     if (hours < 12) {
-      return (greeting = `Good Morning ${activeUser.firstName} ${activeUser.lastName} `);
+      return (greeting = `<div className="p1">Good Morning ${activeUser.firstName} ${activeUser.lastName}</div> `);
     }
     if (hours < 18) {
-      greeting = `Good afternoon ${activeUser.firstName || activeUser.email} ${
-        activeUser.lastName || ""
-      } `;
+      greeting = `<div className="p1">Good afternoon ${
+        activeUser.firstName || activeUser.email
+      } ${activeUser.lastName || ""}</div> `;
     } else {
-      greeting = `Good Evening ${activeUser.firstName} ${activeUser.lastName} `;
+      greeting = `<div className="p1">Good Evening ${activeUser.firstName} ${activeUser.lastName}</div> `;
     }
     return greeting;
   }
@@ -37,7 +37,7 @@ export default function NavigationBar({
             height={30}
             width={30}
             src={gamingLogo}
-            alt="pet logo"
+            alt="gaming logo"
             className="mx-1"
           />
           <span className="p2">Gaming Center</span>
@@ -48,7 +48,7 @@ export default function NavigationBar({
             <Nav.Link href="/">
               <div className="p1">Home</div>
             </Nav.Link>
-            {activeUser && (
+            {!activeUser && (
               <Nav.Link href="/search-games">
                 {" "}
                 <div className="p1">Games</div>

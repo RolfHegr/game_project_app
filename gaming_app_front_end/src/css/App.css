@@ -22,6 +22,15 @@ p {
   font-family: "Roboto Mono", monospace;
 }
 
+.subtitle {
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 95%;
+  width: 100%;
+  margin: 2%;
+}
+
 .p2 {
   font-family: "Rubik", sans-serif;
   font-weight: 300;

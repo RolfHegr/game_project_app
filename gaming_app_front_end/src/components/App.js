@@ -9,6 +9,7 @@ import { useState } from "react";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
 import DisplayGames from "./DisplayGames";
+import CandyPage from "./CandyPage";
 import axios from "axios";
 
 function App() {
@@ -127,6 +128,14 @@ function App() {
           element={
             // <ProtectedRoute>
             <DisplayGames />
+            // </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/candy-game"
+          element={
+            // <ProtectedRoute>
+            <CandyPage />
             // </ProtectedRoute>
           }
         ></Route>

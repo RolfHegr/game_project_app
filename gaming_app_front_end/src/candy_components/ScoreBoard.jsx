@@ -1,7 +1,10 @@
+import "../css/App.css";
+import "../css/Candy.css";
+
 const ScoreBoard = ({ score }) => {
   return (
     <div className="score-board">
-      <h2>{score}</h2>
+      <div className="p1">Your current score: {score}</div>
     </div>
   );
 };

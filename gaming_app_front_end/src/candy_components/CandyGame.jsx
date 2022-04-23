@@ -232,8 +232,8 @@ const CandyGame = () => {
   ]);
 
   return (
-    <div className="app">
-      <div className="game">
+    <div className="candy-board">
+      <div className="candy-game">
         {currentColorArrangement.map((candyColor, index) => (
           <img
             key={index}

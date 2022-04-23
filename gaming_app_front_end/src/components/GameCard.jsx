@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Nav } from "react-bootstrap";
 import "../css/App.css";
 
 export default function GameCard({ testPetObj }) {
@@ -11,22 +11,25 @@ export default function GameCard({ testPetObj }) {
   return (
     <Card
       onClick={handleClick}
-      style={{ width: "45%" }}
+      style={{ width: "35%" }}
       className="m-2 d-flex flex-grow"
     >
       <Card.Img className="mt-2 pet-img" variant="top" alt="pet" src={img} />
       <Card.Body>
         <Card.Title>
-          <span className="title-line">{name} </span>
+          <div className="title-line">{name} </div>
         </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          <span className="p2">A classic...</span>
-        </Card.Subtitle>
+        <Card.Subtitle className="subtitle">A classic...</Card.Subtitle>
         <Card.Text>
-          <span className="p2">Difficulty: {difficulty}</span>
+          <div className="p1">Difficulty: {difficulty}</div>
         </Card.Text>
       </Card.Body>
-      <Button className="my-2">See More</Button>
+      <Button
+        className="my-2"
+        onClick={(event) => (window.location.href = "/candy-game")}
+      >
+        Play Me!
+      </Button>
     </Card>
   );
 }
