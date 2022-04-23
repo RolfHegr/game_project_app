@@ -11,6 +11,7 @@ import LoginModal from "./LoginModal";
 import DisplayGames from "./DisplayGames";
 import CandyPage from "./CandyPage";
 import axios from "axios";
+import ScoreContext from "../contexts/ScoreContext.jsx";
 
 function App() {
   const [signupModalShow, setSignupModalShow] = useState(false);
@@ -65,7 +66,6 @@ function App() {
     setErrorMsg(null);
     try {
       setIsLoading(true);
-      console.log(userObj);
       const res = await axios.post(
         "http://localhost:8000/api/v1/auth/login",
         userObj
@@ -90,56 +90,59 @@ function App() {
 
   return (
     <>
-      <NavigationBar
-        handleLogout={handleLogout}
-        activeUser={activeUser}
-        showSignupModal={() => setSignupModalShow(true)}
-        showLoginModal={() => setLoginModal(true)}
-      />
-      <SignupModal
-        createNewUser={createNewUser}
-        errorMsg={errorMsg}
-        setErrorMsg={setErrorMsg}
-        show={signupModalShow}
-        isLoading={isLoading}
-        onHide={() => setSignupModalShow(false)}
-      />
-      <LoginModal
-        userLogin={userLogin}
-        show={loginModal}
-        errorMsg={errorMsg}
-        setErrorMsg={setErrorMsg}
-        isLoading={isLoading}
-        onHide={() => setLoginModal(false)}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              showLoginModal={() => setLoginModal(true)}
-              showSignupModal={() => setSignupModalShow(true)}
-              activeUser={activeUser}
-            />
-          }
+      <ScoreContext.Provider value={activeUser}>
+        <NavigationBar
+          handleLogout={handleLogout}
+          activeUser={activeUser}
+          showSignupModal={() => setSignupModalShow(true)}
+          showLoginModal={() => setLoginModal(true)}
         />
-        <Route
-          path="/search-games"
-          element={
-            // <ProtectedRoute>
-            <DisplayGames />
-            // </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/candy-game"
-          element={
-            // <ProtectedRoute>
-            <CandyPage />
-            // </ProtectedRoute>
-          }
-        ></Route>
-      </Routes>
+        <SignupModal
+          createNewUser={createNewUser}
+          errorMsg={errorMsg}
+          setErrorMsg={setErrorMsg}
+          show={signupModalShow}
+          isLoading={isLoading}
+          onHide={() => setSignupModalShow(false)}
+        />
+        <LoginModal
+          userLogin={userLogin}
+          show={loginModal}
+          errorMsg={errorMsg}
+          setErrorMsg={setErrorMsg}
+          isLoading={isLoading}
+          onHide={() => setLoginModal(false)}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                showLoginModal={() => setLoginModal(true)}
+                showSignupModal={() => setSignupModalShow(true)}
+                activeUser={activeUser}
+              />
+            }
+          />
+          <Route
+            path="/search-games"
+            element={
+              // <ProtectedRoute>
+              <DisplayGames />
+              // </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/candy-game"
+            element={
+              // <ProtectedRoute>
+              <CandyPage />
+              // </ProtectedRoute>
+            }
+          ></Route>
+        </Routes>
+      </ScoreContext.Provider>
     </>
   );
 }
