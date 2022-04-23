@@ -16,14 +16,14 @@ export default function NavigationBar({
     const hours = date.getHours();
 
     if (hours < 12) {
-      return (greeting = `<div className="p1">Good Morning ${activeUser.firstName} ${activeUser.lastName}</div> `);
+      return (greeting = `Good Morning ${activeUser.firstName} ${activeUser.lastName} `);
     }
     if (hours < 18) {
-      greeting = `<div className="p1">Good afternoon ${
-        activeUser.firstName || activeUser.email
-      } ${activeUser.lastName || ""}</div> `;
+      greeting = `Good afternoon ${activeUser.firstName || activeUser.email} ${
+        activeUser.lastName || ""
+      }`;
     } else {
-      greeting = `<div className="p1">Good Evening ${activeUser.firstName} ${activeUser.lastName}</div> `;
+      greeting = `Good Evening ${activeUser.firstName} ${activeUser.lastName} `;
     }
     return greeting;
   }
@@ -68,17 +68,7 @@ export default function NavigationBar({
                 </Nav.Link>
               )}{" "}
               {activeUser && (
-                <NavDropdown
-                  title={createGreeting(activeUser)}
-                  id="nav-dropdown"
-                >
-                  <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item eventKey="4.2">
-                    Profile Page
-                  </NavDropdown.Item>
-                  {/* <NavDropdown.Item eventKey="4.3">
-                    Something else here
-                  </NavDropdown.Item> */}
+                <NavDropdown title={createGreeting()} id="nav-dropdown">
                   <NavDropdown.Divider />
                   <NavDropdown.Item eventKey="4.4" onClick={handleLogout}>
                     Log Out

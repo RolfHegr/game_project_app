@@ -8,6 +8,7 @@ import redCandy from "../candy_images/red-candy.png";
 import yellowCandy from "../candy_images/yellow-candy.png";
 import blank from "../candy_images/blank.png";
 import "../css/Candy.css";
+import ScoreContext from "../contexts/ScoreContext";
 
 const width = 8; ///width of out board
 
