@@ -4,10 +4,12 @@ import { StatusCodes } from "http-status-codes";
 
 const lastScore = async (req, res) => {
   const { email } = req.body;
+  console.log("res.data", res.data);
 
   try {
     const noScore = "User have no scores saved";
     const user = await User.findOne({ email });
+    console.log("user", user);
     if (!user.highScoreCandy.score) {
       res.status(StatusCodes.OK).json({
         noScore,

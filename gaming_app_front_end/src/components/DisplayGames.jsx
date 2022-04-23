@@ -11,18 +11,20 @@ export default function DisplayGames() {
     difficulty: "easy",
   };
 
-  const testCandyObj = {
+  const candyObj = {
     img: candyCrush,
     name: "Candy Crush",
     difficulty: "medium",
   };
 
-  const testArrayOfData = [testPetObj, testCandyObj];
-
   return (
     <Container className="my-5 py-5">
       <div className="d-flex w-100">
-        <Row xs={1} md={5} className="g-10 d-flex justify-content-center mt-2">
+        <Row
+          xs={1}
+          md={5}
+          className=" w-100 d-flex justify-content-center mt-2"
+        >
           {/* <GameCard testPetObj={testPetObj}/> */}
           {/* {testArrayOfData.map((testPetObj, index) => {
             return <GameCard testPetObj={testPetObj} key={index} />;
@@ -31,8 +33,8 @@ export default function DisplayGames() {
         <Col>   
         </Col>
       ))} */}
-          <GameCard testPetObj={testPetObj}></GameCard>{" "}
-          <GameCard testPetObj={testCandyObj}></GameCard>
+
+          <GameCard className="w-50" testPetObj={candyObj}></GameCard>
         </Row>
       </div>
     </Container>

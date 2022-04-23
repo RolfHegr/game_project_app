@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Card, Container } from "react-bootstrap";
 import "../css/HomePage.css";
 import "../css/App.css";
+import axios from "axios";
+import ScoreContext from "../contexts/ScoreContext";
 
 export default function HomePage({
   showSignupModal,
   showLoginModal,
   activeUser,
 }) {
+  const { latestScore, highScore } = useContext(ScoreContext);
   return (
     <div className="c-display-info ">
       <Container
@@ -36,8 +39,10 @@ export default function HomePage({
           )}
           {activeUser && (
             <h3>
-              Your high scores are: <div className="p2">Candy Crush:</div>{" "}
-              {"highschore"} <div className="p2">Snake:</div> {"highschore"}{" "}
+              High Scores <div className="p2"></div>{" "}
+              {latestScore && <div>Most Recent Score: {latestScore}</div>}
+              {highScore && "All time high:"} {highScore}{" "}
+              <div className="p2"></div>
             </h3>
           )}
         </Card>

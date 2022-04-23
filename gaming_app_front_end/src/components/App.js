@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/RemoveBootstrapDefault.css";
 import "../css/App.css";
 import "../css/TextStyles.css";
+import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router";
 import HomePage from "./HomePage";
 import NavigationBar from "./NavigationBar";
@@ -21,6 +22,8 @@ function App() {
   const [activeUser, setActiveUser] = useState(
     JSON.parse(localStorage.getItem("userObj"))
   );
+  const [latestScore, setLatestScore] = useState(null);
+  const [highScore, setHighScore] = useState(null);
   const navigate = useNavigate();
 
   async function setLocalStorageWithUser(user) {
@@ -56,6 +59,56 @@ function App() {
     }
   }
 
+  async function getHighScore() {
+    try {
+      const userObj = {
+        email: activeUser.email,
+      };
+
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/scores/highScore",
+        userObj
+      );
+      const { data } = res;
+      const { highScore } = data;
+      if (highScore) {
+        setHighScore(highScore);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function getLastScore() {
+    try {
+      const userObj = {
+        email: activeUser.email,
+      };
+
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/scores/lastScore",
+        userObj
+      );
+      const { data } = res;
+      const { lastScore } = data;
+      if (lastScore) {
+        setLatestScore(lastScore);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getLastScore();
+    getHighScore();
+
+    return () => {
+      getLastScore();
+      getHighScore();
+    };
+  }, []);
+
   function handleLogout() {
     setActiveUser(null);
     localStorage.clear();
@@ -90,7 +143,7 @@ function App() {
 
   return (
     <>
-      <ScoreContext.Provider value={activeUser}>
+      <ScoreContext.Provider value={{ activeUser, latestScore, highScore }}>
         <NavigationBar
           handleLogout={handleLogout}
           activeUser={activeUser}

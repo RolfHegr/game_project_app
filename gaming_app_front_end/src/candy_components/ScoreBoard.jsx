@@ -1,11 +1,12 @@
 import "../css/App.css";
 import "../css/Candy.css";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import ScoreContext from "../contexts/ScoreContext.jsx";
 
 export default function ScoreBoard({ score }) {
-  const activeUser = useContext(ScoreContext);
+  const { activeUser } = useContext(ScoreContext);
+
   async function sendScoreToDB(score) {
     try {
       const updateURL = "http://localhost:8000/api/v1/scores/updateScore";
@@ -14,9 +15,7 @@ export default function ScoreBoard({ score }) {
         score: score,
         email: activeUser.email,
       };
-      console.log("trying to send score");
       const res = await axios.post(updateURL, scoreObj);
-      console.log("send the score", score, "to db");
     } catch (error) {
       console.error(error);
     }
@@ -26,8 +25,8 @@ export default function ScoreBoard({ score }) {
     <div className="score-board">
       <div className="p1">Your current score: {score}</div>
       {
-        (window.onbeforeunload = function () {
-          sendScoreToDB(score);
+        (window.onbeforeunload = async function () {
+          return sendScoreToDB(score);
         })
       }
     </div>
