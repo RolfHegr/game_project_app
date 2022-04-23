@@ -5,12 +5,6 @@ import snakeImg from "../resources/snake.png";
 import candyCrush from "../resources/candyCrush.png";
 
 export default function DisplayGames() {
-  const testPetObj = {
-    img: snakeImg,
-    name: "Snake",
-    difficulty: "easy",
-  };
-
   const candyObj = {
     img: candyCrush,
     name: "Candy Crush",

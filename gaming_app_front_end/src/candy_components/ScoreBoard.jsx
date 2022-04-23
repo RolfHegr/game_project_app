@@ -10,8 +10,9 @@ export default function ScoreBoard({ score }) {
   async function sendScoreToDB(score) {
     try {
       const updateURL = "http://localhost:8000/api/v1/scores/updateScore";
+      let dateStr = new Date();
       const scoreObj = {
-        date: new Date(),
+        date: dateStr.toString(),
         score: score,
         email: activeUser.email,
       };

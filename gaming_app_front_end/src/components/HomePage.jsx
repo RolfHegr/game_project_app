@@ -5,12 +5,9 @@ import "../css/App.css";
 import axios from "axios";
 import ScoreContext from "../contexts/ScoreContext";
 
-export default function HomePage({
-  showSignupModal,
-  showLoginModal,
-  activeUser,
-}) {
-  const { latestScore, highScore } = useContext(ScoreContext);
+export default function HomePage({ activeUser }) {
+  const { latestScore, highScore, latestScoreDate } = useContext(ScoreContext);
+
   return (
     <div className="c-display-info ">
       <Container
@@ -32,15 +29,18 @@ export default function HomePage({
             {!activeUser && (
               <h3>Welcome to the gaming app. Register to play!</h3>
             )}
-            {activeUser && <h3>Welcome back {activeUser.firstName}</h3>}
+            {activeUser && <h3>Welcome back {activeUser.userName}</h3>}
           </Card.Header>
-          {!activeUser && (
-            <p>We have plenty of games for you to play, come and join us!</p>
-          )}
+          {!activeUser && <p>Come crush some candy!</p>}
           {activeUser && (
             <h3>
               High Scores <div className="p2"></div>{" "}
-              {latestScore && <div>Most Recent Score: {latestScore}</div>}
+              {latestScore && (
+                <div>
+                  Most Recent Score: {latestScore} at{" "}
+                  {latestScoreDate && latestScoreDate.substr(0, 24)}
+                </div>
+              )}
               {highScore && "All time high:"} {highScore}{" "}
               <div className="p2"></div>
             </h3>

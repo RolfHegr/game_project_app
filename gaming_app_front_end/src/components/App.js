@@ -23,6 +23,7 @@ function App() {
     JSON.parse(localStorage.getItem("userObj"))
   );
   const [latestScore, setLatestScore] = useState(null);
+  const [latestScoreDate, setLatestScoreDate] = useState(null);
   const [highScore, setHighScore] = useState(null);
   const navigate = useNavigate();
 
@@ -90,9 +91,13 @@ function App() {
         userObj
       );
       const { data } = res;
-      const { lastScore } = data;
+      const { lastScore, date } = data;
       if (lastScore) {
         setLatestScore(lastScore);
+      }
+      if (date) {
+        console.log(date)
+        setLatestScoreDate(date);
       }
     } catch (error) {
       console.error(error);
@@ -143,7 +148,9 @@ function App() {
 
   return (
     <>
-      <ScoreContext.Provider value={{ activeUser, latestScore, highScore }}>
+      <ScoreContext.Provider
+        value={{ activeUser, latestScore, highScore, latestScoreDate }}
+      >
         <NavigationBar
           handleLogout={handleLogout}
           activeUser={activeUser}

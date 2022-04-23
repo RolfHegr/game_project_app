@@ -18,9 +18,11 @@ const lastScore = async (req, res) => {
 
     const { newScores } = user.highScoreCandy;
     const lastScore = newScores[newScores.length - 1];
+    const date = user.highScoreCandy.date
 
     res.status(StatusCodes.OK).json({
       lastScore,
+      date
     });
   } catch (error) {
     console.error(error);
