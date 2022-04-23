@@ -7,7 +7,7 @@ export default function GameCard({ testPetObj }) {
     console.log("clickingOnImg");
   }
 
-  const { img, name, difficulty } = testPetObj;
+  const { img, name, difficulty, description } = testPetObj;
   return (
     <Card
       onClick={handleClick}
@@ -21,7 +21,9 @@ export default function GameCard({ testPetObj }) {
         </Card.Title>
         <Card.Subtitle className="subtitle">A classic...</Card.Subtitle>
         <Card.Text>
-          <div className="p1">Difficulty: {difficulty}</div>
+          <div className="p1">
+            <div>{description}</div>Difficulty: {difficulty}
+          </div>
         </Card.Text>
       </Card.Body>
       <Button

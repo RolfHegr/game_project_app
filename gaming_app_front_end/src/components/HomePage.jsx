@@ -19,10 +19,11 @@ export default function HomePage({ activeUser }) {
             <div className="welcome-container">
               <div className="container-again">
                 <div className="sign">
-                  <span className="fast-flicker">ga</span>
-                  <span className="flicker">ming</span>
-                  <span className="blank-space"> </span>
-                  <span className="fast-flicker"> cen</span>ter
+                  <span>
+                    <span className="fast-flicker">ga</span>
+                    <span className="flicker">ming</span>
+                    <span className="fast-flicker"> cen</span>ter{" "}
+                  </span>
                 </div>
               </div>
             </div>

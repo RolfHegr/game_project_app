@@ -25,8 +25,11 @@
   --color: #fafafa;
 }
 
-.welcome-container,
-.container-container {
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
   width: 100%;
   height: 100%;
   background-color: #060608;
@@ -34,24 +37,23 @@
   margin-top: 2%;
 }
 
-.welcome-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(background);
-}
-
-.container-again {
-  color: white;
-  font-size: 1.5rem;
+.container-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: #060608;
+  border-radius: 5px;
+  margin-top: 2%;
 }
 
 .sign {
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   flex-direction: row;
   margin: 25% 50% 15% 50%;
   width: 100%;
@@ -65,7 +67,7 @@
   letter-spacing: 5;
   font-family: "Press Start 2P", cursive;
   text-transform: uppercase;
-  font-size: 1.8em;
+  font-size: 2.9vw;
   color: #ffe6ff;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
     -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
@@ -93,11 +95,6 @@
     color: #ff2483;
     text-shadow: none;
   }
-}
-
-.blank-space {
-  width: 20px;
-  background-color: black;
 }
 
 .flicker {

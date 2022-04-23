@@ -1,7 +1,6 @@
 import React from "react";
 import GameCard from "./GameCard";
 import { Container, Row } from "react-bootstrap";
-import snakeImg from "../resources/snake.png";
 import candyCrush from "../resources/candyCrush.png";
 
 export default function DisplayGames() {
@@ -9,6 +8,7 @@ export default function DisplayGames() {
     img: candyCrush,
     name: "Candy Crush",
     difficulty: "medium",
+    description: "Match candies in rows of three, four, or more to score!",
   };
 
   return (
