@@ -1,6 +1,6 @@
 .candy-board {
   display: flex;
-  padding: 30px;
+  padding: 2%;
   margin-left: 12%;
   background-color: white;
   border: 5px solid black;
@@ -9,16 +9,15 @@
 }
 
 .candy-game {
-  max-width: 560px;
-  min-height: 560px;
+  max-width: 66%;
+  min-height: 66%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .candy-game img {
-  width: 70px;
-  height: 70px;
-  display: flex;
+  width: 4.5vw;
+  height: 4.5vw;
 }
 
 .score-board {
