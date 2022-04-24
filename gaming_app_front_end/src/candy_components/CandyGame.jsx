@@ -10,7 +10,7 @@ import blank from "../candy_images/blank.png";
 import "../css/Candy.css";
 import ScoreContext from "../contexts/ScoreContext";
 
-const width = 8; ///width of out board
+const width = 8; ///candy per row on omptimal size
 
 ///candy colors
 const candyColors = [
@@ -248,6 +248,7 @@ const CandyGame = () => {
             onDragLeave={(e) => e.preventDefault()}
             onDrop={dragDrop}
             onDragEnd={dragEnd}
+            className="candy-image"
           />
         ))}
       </div>
