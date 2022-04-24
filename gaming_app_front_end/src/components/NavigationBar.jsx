@@ -48,7 +48,7 @@ export default function NavigationBar({
             <Nav.Link href="/">
               <div className="p1">Home</div>
             </Nav.Link>
-            {!activeUser && (
+            {activeUser && (
               <Nav.Link href="/search-games">
                 {" "}
                 <div className="p1">Games</div>
