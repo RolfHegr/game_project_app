@@ -24,8 +24,8 @@
 
 @media only screen and (min-width: 100px) and (max-width: 480px) {
   .candy-image {
-    width: 5.2vw;
-    height: 5.2vw;
+    width: 5.5vw;
+    height: 5.5vw;
   }
 
   .candy-game {
@@ -40,15 +40,15 @@
 
 @media only screen and (min-width: 481px) and (max-width: 770px) {
   .candy-image {
-    width: 5.5vw;
-    height: 5.5vw;
+    width: 4.8vw;
+    height: 4.8vw;
   }
   .candy-game {
     width: 95%;
-    height: 95%;
+    height: 90%;
   }
   .candy-board {
-    width: 82%;
+    width: 89%;
   }
 }
 
@@ -60,6 +60,17 @@
   .candy-game {
     max-width: 80%;
     max-height: 80%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .candy-image {
+    width: 4.2vw;
+    height: 4.2vw;
+  }
+  .candy-game {
+    max-width: 84%;
+    max-height: 84%;
   }
 }
 
