@@ -22,7 +22,7 @@
   height: 4.5vw;
 } */
 
-@media only screen and (min-width: 100px) and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .candy-image {
     width: 5.5vw;
     height: 5.5vw;
@@ -40,15 +40,15 @@
 
 @media only screen and (min-width: 481px) and (max-width: 770px) {
   .candy-image {
-    width: 4.8vw;
-    height: 4.8vw;
+    width: 6vw;
+    height: 6vw;
   }
   .candy-game {
-    width: 95%;
-    height: 90%;
+    width: 90%;
+    height: 99%;
   }
   .candy-board {
-    width: 89%;
+    width: 90%;
   }
 }
 
@@ -63,6 +63,28 @@
   }
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1200) {
+  .candy-image {
+    width: 5vw;
+    height: 5vw;
+  }
+  .candy-game {
+    max-width: 84%;
+    max-height: 84%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .candy-image {
+    width: 5vw;
+    height: 5vw;
+  }
+  .candy-game {
+    max-width: 84%;
+    max-height: 84%;
+  }
+}
+
 @media only screen and (min-width: 1600px) {
   .candy-image {
     width: 4.2vw;
@@ -74,6 +96,16 @@
   }
 }
 
+@media only screen and (min-width: 1800px) {
+  .candy-image {
+    width: 7vw;
+    height: 7vw;
+  }
+  .candy-game {
+    max-width: 84%;
+    max-height: 84%;
+  }
+}
 .score-board {
   text-align: center;
   width: 10%;
