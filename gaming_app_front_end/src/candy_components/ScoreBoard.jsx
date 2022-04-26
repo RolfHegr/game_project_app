@@ -9,6 +9,7 @@ export default function ScoreBoard({ score }) {
 
   async function sendScoreToDB(score) {
     try {
+      console.log('trying to post score')
       const updateURL = "http://localhost:8000/api/v1/scores/updateScore";
       let dateStr = new Date();
       const scoreObj = {
@@ -17,6 +18,7 @@ export default function ScoreBoard({ score }) {
         email: activeUser.email,
       };
       const res = await axios.post(updateURL, scoreObj);
+      console.log('should have posted to server')
     } catch (error) {
       console.error(error);
     }
@@ -25,6 +27,7 @@ export default function ScoreBoard({ score }) {
   return (
     <div className="score-board">
       <div className="p1">Your current score: {score}</div>
+
       {
         (window.onbeforeunload = async function () {
           return sendScoreToDB(score);

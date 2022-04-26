@@ -32,7 +32,7 @@ export default function HomePage({ activeUser }) {
             )}
             {activeUser && <h3>Welcome back {activeUser.userName}</h3>}
           </Card.Header>
-          {!activeUser && <p>Come crush some candy!</p>}
+          {!activeUser && <p id="cta" className="my-2">Come crush some candy!</p>}
           {activeUser && (
             <h3>
               High Scores <div className="p2"></div>{" "}

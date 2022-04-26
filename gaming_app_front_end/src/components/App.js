@@ -27,7 +27,7 @@ function App() {
   const [highScore, setHighScore] = useState(null);
   const navigate = useNavigate();
 
-  async function setLocalStorageWithUser(user) {
+  function setLocalStorageWithUser(user) {
     try {
       const userStringified = JSON.stringify(user);
       localStorage.setItem("userObj", userStringified);
@@ -49,10 +49,11 @@ function App() {
       userAndToken.token = token;
 
       setActiveUser(userAndToken);
-      setLocalStorageWithUser(userAndToken);
+      setLocalStorageWithUser(user);
       setIsLoading(false);
       setSignupModalShow(false);
       navigate("/");
+      window.location.reload();
     } catch (error) {
       console.error("error response", error.response.data.msg);
       setErrorMsg(error.response.data.msg || error);
@@ -92,6 +93,7 @@ function App() {
       );
       const { data } = res;
       const { lastScore, date } = data;
+      console.log('data', data)
       if (lastScore) {
         setLatestScore(lastScore);
       }
@@ -107,6 +109,7 @@ function App() {
   useEffect(() => {
     getLastScore();
     getHighScore();
+   
 
     return () => {
       getLastScore();
@@ -133,9 +136,10 @@ function App() {
         const { user, token } = res.data;
         const userAndToken = user;
         userAndToken.token = token;
-        setLocalStorageWithUser(userAndToken);
+        setLocalStorageWithUser(user);
         setActiveUser(userAndToken);
         navigate("/");
+        window.location.reload();
         setIsLoading(false);
         setLoginModal(false);
       }

@@ -68,8 +68,8 @@ export default function SignupModal(props) {
       repeatPassword: repeatpwdRef.current.value,
       highScoreCandy: {
         date: new Date(),
-        score: "",
-        allScores: [0],
+        score: "0",
+        newScores: [0],
       },
     };
 

@@ -1,6 +1,5 @@
 MINIMAL VIABLE PRODUCT DONE
 
-
 --------- IF TIME -----------
 1. Create Contexts in stead of props. 
 2. Make the currently 2 modal components into ONE.( that renders {children} )
