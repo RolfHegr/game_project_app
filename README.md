@@ -1,4 +1,2 @@
 # game_project_app
-Building game Full Stack in team
-
--- RolfHegr, naomiruthh,
+Simple full stack game app with react, bootstrap, node express, mongoose in colab with naomiruthh. 
